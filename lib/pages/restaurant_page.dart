@@ -16,6 +16,7 @@ class __RestaurantPageState extends State<RestaurantPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFCEDBD1),
       appBar: AppBar(
         title: Text('${widget.selectedCuisine} Cuisine'),
       ),

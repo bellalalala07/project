@@ -3,7 +3,7 @@ class StoreDetails {
   String meal;
   String description;
   String price;
-  // String image;
+  String image;
   String storeName;
 
   StoreDetails(
@@ -11,7 +11,7 @@ class StoreDetails {
       this.meal,
       this.description,
       this.price,
-      //this.image,
+      this.image,
       this.storeName});
 
   StoreDetails.fromMap(Map<String, dynamic> data) {
@@ -19,7 +19,7 @@ class StoreDetails {
     meal = data['meal'];
     description = data['description'];
     price = data['price'];
-    //image = data['image'];
+    image = data['image'];
     storeName = data['storeName'];
   }
 
@@ -29,7 +29,7 @@ class StoreDetails {
       'meal': meal,
       'description': description,
       'price': price,
-      //'image': image,
+      'image': image,
       'storeName': storeName,
     };
   }

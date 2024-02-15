@@ -5,8 +5,6 @@ import 'package:project/pages/order_page.dart';
 import 'package:project/services/firestore.dart';
 import 'package:project/model/storeDetails.dart';
 
-import 'CartPage.dart';
-
 class RestaurantDetails extends StatefulWidget {
   final String selectedRestaurant;
   RestaurantDetails({Key key, @required this.selectedRestaurant})
@@ -20,8 +18,9 @@ class _RestaurantDetailsState extends State<RestaurantDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFCEDBD1),
       appBar: AppBar(
-        title: Text('Details'),
+        title: Text('Restaurant Details'),
       ),
       body: FutureBuilder<List<StoreDetails>>(
         future: FirestoreService().readStoreDetailData(),
@@ -37,11 +36,11 @@ class _RestaurantDetailsState extends State<RestaurantDetails> {
                 return Padding(
                   padding: EdgeInsets.all(25),
                   child: ListTile(
-                    // leading: Image.asset(
-                    //   snapshot.data[index],
-                    //   width: 40.0,
-                    //   fit: BoxFit.fill,
-                    // ),
+                    leading: Image.asset(
+                      filteredStoreDetails[index].image,
+                      width: 40.0,
+                      fit: BoxFit.fill,
+                    ),
                     title: Text(filteredStoreDetails[index].meal),
                     subtitle: Text(filteredStoreDetails[index].description),
                     onTap: () {
@@ -55,6 +54,7 @@ class _RestaurantDetailsState extends State<RestaurantDetails> {
                             description:
                                 filteredStoreDetails[index].description,
                             price: filteredStoreDetails[index].price,
+                            image: filteredStoreDetails[index].image,
                           ),
                         ),
                       );

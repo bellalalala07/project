@@ -11,14 +11,16 @@ class OrderPage extends StatefulWidget {
   final String meal;
   final String description;
   final String price;
+  final String image;
 
-  OrderPage({
-    Key key,
-    @required this.selectedstoreName,
-    @required this.meal,
-    @required this.description,
-    @required this.price,
-  }) : super(key: key);
+  OrderPage(
+      {Key key,
+      @required this.selectedstoreName,
+      @required this.meal,
+      @required this.description,
+      @required this.price,
+      @required this.image})
+      : super(key: key);
 
   @override
   State<OrderPage> createState() => _OrderPageState();
@@ -38,7 +40,7 @@ class _OrderPageState extends State<OrderPage> {
     return Scaffold(
       backgroundColor: Color(0xFFCEDBD1),
       appBar: AppBar(
-        title: const Text('Details'),
+        title: const Text('Order'),
         actions: [
           Padding(
             padding: const EdgeInsets.all(10.0),
@@ -110,14 +112,14 @@ class _OrderPageState extends State<OrderPage> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         mainAxisSize: MainAxisSize.max,
                         children: <Widget>[
-                          // Container(
-                          //   padding: EdgeInsets.all(10.0),
-                          //   child: Image.asset(
-                          //     'images/background.jpg',
-                          //     width: 50,
-                          //     fit: BoxFit.contain,
-                          //   ),
-                          // ),
+                          Container(
+                            padding: EdgeInsets.all(10.0),
+                            child: Image.asset(
+                              '${widget.image}',
+                              width: 50,
+                              fit: BoxFit.contain,
+                            ),
+                          ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
@@ -327,9 +329,7 @@ class _OrderPageState extends State<OrderPage> {
                           ElevatedButton(
                             child: const Text('Add to cart'),
                             onPressed: () {
-                              for (int i = 0; i < counter; i++) {
-                                cartController.addToCart(orderDetail);
-                              }
+                              cartController.addToCart(orderDetail);
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
